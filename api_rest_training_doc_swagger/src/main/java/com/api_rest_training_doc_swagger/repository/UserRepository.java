@@ -5,11 +5,14 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.api_rest_training_doc_swagger.handler.BusinessException;
 import com.api_rest_training_doc_swagger.model.User;
 
 @Repository
 public class UserRepository {
 	public void save(User user) {
+		//Handler Pattern
+		if(user.getId()==null) throw new BusinessException("O campo login é obrigatório");
 		if(user.getId()==null) 
 			System.out.println("Save - recebendo usuario na camada repository");
 		else
